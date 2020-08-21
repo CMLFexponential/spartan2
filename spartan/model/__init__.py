@@ -7,12 +7,9 @@
 
 # here put the import lib
 
-from spartan.util import MODEL_PATH
-
+from ..util import MODEL_PATH
 from enum import Enum
 from functools import partial
-
-from ._model import PipeLine
 
 
 def __call__(policy: str, *args, **kwargs) -> object:
@@ -35,27 +32,23 @@ def __call__(policy: str, *args, **kwargs) -> object:
     return model_cls.__create__(*args, **kwargs)
 
 
-# please register a new module in lexical (alpha-beta) order
 BeatLex = partial(__call__, MODEL_PATH + ".beatlex")
-BeatGAN = partial(__call__, MODEL_PATH + ".beatgan")
-EagleMine = partial(__call__, MODEL_PATH + ".eaglemine")
-EigenPulse = partial(__call__, MODEL_PATH + ".eigenpulse")
-Eigenspokes = partial(__call__, MODEL_PATH + ".eigenspokes")
 HoloScope = partial(__call__, MODEL_PATH + ".holoscope")
-RPeak = partial(__call__, MODEL_PATH + ".rpeak")
+FlowScope = partial(__call__, MODEL_PATH + ".flowscope")
+Eigenspokes = partial(__call__, MODEL_PATH + ".eigenspokes")
+EigenPulse = partial(__call__, MODEL_PATH + ".eigenpulse")
 Summarize = partial(__call__, MODEL_PATH + ".summarize")
-IAT = partial(__call__, MODEL_PATH + ".iat")
+BeatGAN = partial(__call__, MODEL_PATH + ".beatgan")
+RPeak = partial(__call__, MODEL_PATH + ".rpeak")
 
 
 __all__ = [
-    'PipeLine',
     'BeatLex',
-    'BeatGAN',
-    'EagleMine',    
-    'EigenPulse',
-    'Eigenspokes',
     'HoloScope',
-    'RPeak',
+    'FlowScope',
+    'Eigenspokes',
+    'EigenPulse',
+    'BeatGAN',
     'Summarize',
-    'IAT',
+    'RPeak',
 ]
